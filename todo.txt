@@ -1,0 +1,95 @@
+Witajcie,
+
+Najtrudniejsze zadanie już za wami, zebranie w sobie odwagi by aplikować na staż do firmy Ragnarson.
+Zgłosiło się sporo chętnych >20, więc przygotowałem zadanie które pomoże mi ocenić wasze umiejętności.
+Poniższe zadanie nie jest jedynym czynnikiem który będzie decydował o tym kto zakwalifikuje się na staż,
+ale na pewno będzie stanowił istotny element oceny.
+
+Na wykonanie zadanie macie czas do 25 kwietnia do godz. 18:00. Czasu jest sporo, więc spokojnie powinniście dać radę.
+Jeśli jednak któreś z was będzie miało jakiś problem, utknie gdzieś, nie będzie miało pomysło na realizację,
+piszczie od razu, szkoda czasu i szansy. Na pewno jakos temu zaradzimy.
+
+Zadanie:
+
+Pamietam jak jakieś 20 lat temu na Atari 65XE, moim uwczesnym komputerze zetknąłem się poraz pierwszy z programowaniem.
+Był to wirtualny "żółw" (LOGO), który reagował na komendy wydawane z klawiatury rysując linie na ekranie. Proste, ale potężne narzędzie.
+
+Waszym zadaniem będzie napisać prosty interpreter języka LOGO, bardzo uproszczony, który będzie reagował na 5 komend.
+
+Program na wejściu powinien przyjmować jeden argument, wielkość planszy (n; n>1, nieparzyste).
+
+np:
+
+$ ruby logo.rb 11
+
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . X . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+
+Plansza powinna skladac sie z pustych pol w rozmarze nxn. Na srodku powinien znajdowac sie element poczatkowy, nasz "żółw".
+
+Program powinien dzialac w nieskonczonej petli czekajac na komenty:
+
+np:
+
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . X . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+
+Enter command: U 3
+
+Możliwe komendy (wielkość liter nie ma znaczenia):
+
+"U X" - do gory x pozycji
+"D X" - w dol x pozycji
+"R X" - w prawo x pozycji
+"L X" - w lewo x pozycji
+"Q" - wyjscie z programu. Koniec
+
+np:
+
+po komendzie U 3, stan powinien sie zmienic na
+
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . X . . . . .
+. . . . . X . . . . .
+. . . . . X . . . . .
+. . . . . X . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+. . . . . . . . . . .
+
+Enter command:
+
+Program powinien być odporny na błędy wprowadzanych danych, walidować zakres
+(nie powinien zezwalać wyjść poza plansze), ignorować złe komendy
+
+Jeśli coś jest nie jasne, to piszcie śmiało z pytaniami :)
+
+Jako rozwiązanie oczekuję:
+- opisu podejścia do rozwiązania problemu
+- kodu źródłowego
+- opisu jak uruchomić napisany program
+- dla chętnych (testy jednostkowe)
+
+Zadanie należy wykonać samodzielnie. Rozwiązanie będzie oceniane pod względem poprawności, czytelności i wydajności.
+
