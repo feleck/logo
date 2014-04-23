@@ -1,16 +1,6 @@
-Witajcie,
-
-Najtrudniejsze zadanie już za wami, zebranie w sobie odwagi by aplikować na staż do firmy Ragnarson.
-Zgłosiło się sporo chętnych >20, więc przygotowałem zadanie które pomoże mi ocenić wasze umiejętności.
-Poniższe zadanie nie jest jedynym czynnikiem który będzie decydował o tym kto zakwalifikuje się na staż,
-ale na pewno będzie stanowił istotny element oceny.
-
-Na wykonanie zadanie macie czas do 25 kwietnia do godz. 18:00. Czasu jest sporo, więc spokojnie powinniście dać radę.
-Jeśli jednak któreś z was będzie miało jakiś problem, utknie gdzieś, nie będzie miało pomysło na realizację,
-piszczie od razu, szkoda czasu i szansy. Na pewno jakos temu zaradzimy.
+25 kwietnia do godz. 18:00. 
 
 Zadanie:
-
 Pamietam jak jakieś 20 lat temu na Atari 65XE, moim uwczesnym komputerze zetknąłem się poraz pierwszy z programowaniem.
 Był to wirtualny "żółw" (LOGO), który reagował na komendy wydawane z klawiatury rysując linie na ekranie. Proste, ale potężne narzędzie.
 
