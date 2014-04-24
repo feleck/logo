@@ -21,15 +21,13 @@ class Logo
   end
 
   def read_command
-    command = nil
-    while !command do
-      print "Enter command: "
+    while true do
+      print "Enter command: " 
       command = $stdin.gets.chomp.downcase
-      command = nil unless command =~ /^([udrl] \d+)$|^q$/
+      return command.split if command =~ /^([udrl] \d+)$|^q$/
     end
-    command = command.split
   end
-  
+
   def valid_command?(command)
     last_x = @path.last[0]
     last_y = @path.last[1]
@@ -80,19 +78,4 @@ class Logo
   end
 end
 
-if ARGV.empty? || ARGV.length > 1 
-  puts "Use exactly one arg!"
-  exit
-elsif
-  ARGV[0].to_i <= 1 || ARGV[0].to_i % 2 == 0
-  puts "Arg must be number greater than 1 and odd!"
-  exit
-else
-  logo = Logo.new(ARGV[0])
-  while true do
-    logo.print_board
-    command = logo.read_command # command[0] - direction, command[1] - length
-    exit if command[0] == 'q'
-    logo.path.concat(logo.calculate_path(command)) if logo.valid_command?(command)
-  end
-end
+
