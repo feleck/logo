@@ -1,81 +1,16 @@
 class Logo
-  attr_accessor :dim
-
+  attr_accessor :path
   def initialize(board_dimensions)
-    @path = []
     @dim = board_dimensions.to_i
-#    @pos = [[0,0],[1,1]]
-    @initial_position = [(@dim/2.0).round, (@dim/2.0).round]
-    @current_postion = @initial_position
-    @path << @current_postion
-    print_board
-    add_to_path(read_command)
-  end
-
-  def add_to_path(command)
-    direction, length = command[0], command[1].to_i
-    puts direction
-    puts length
-    if command[1].to_i > @dim
-      puts "Out of range!"
-    else
-      @path << calc_move(direction, length)
-    end
-  end
-
-  def calc_move(direction, length)
-    puts @current_postion.to_s
-    if direction == 'l'
-#      puts 'left' + length.to_s
-      if @current_postion[1].to_i - length > 0
-        puts 'left' + length.to_s
-        
-        #temp_postion = @current_postion.dup
-        length.times do
-          temp_postion = @current_postion.dup
-          temp_postion[1] -= 1
-          @path << temp_postion
-        end
-        puts @path.to_s
-        print_board
-      end
-    elsif direction == 'r'
-#      puts 'right' + length.to_s
-      if @current_postion[1].to_i + length > @dim
-      end
-    elsif direction == 'u'
-      puts 'up' + length.to_s
-      if @current_postion[0].to_i - length > 0
-      end
-    elsif direction == 'd'
-      if @current_postion[0].to_i + length > @dim
-      end
-    end
-  end
-
-  def 
-
-  def print_board_old
-    puts "\e[H\e[2J"  # clear screen
-    (1..@dim).each do |i|
-      (1..@dim).each do |j|
-        if [i, j] == @initial_position
- #         print "x "
-          print "[#{i},#{j}]"
-        else
-          #print ". "
-          print "[#{i},#{j}]"
-        end
-      end
-      print "\n"
-    end
+    @path = []
+    @path << [(@dim/2.0).to_i, (@dim/2.0).to_i]
   end
 
   def print_board
-    #puts "\e[H\e[2J"  # clear screen
-    (1..@dim).each do |i|
-      (1..@dim).each do |j|
-        if @path.include?([i, j])
+    puts "\e[H\e[2J"  # clear screen
+    (0...@dim).each do |x|
+      (0...@dim).each do |y|
+        if @path.include?([x, y])
           print "x "
         else
           print ". "
@@ -92,30 +27,56 @@ class Logo
       command = $stdin.gets.chomp.downcase
       command = nil unless command =~ /^([udrl] \d+)$|^q$/
     end
-    exit if command == 'q'
     command = command.split
   end
-
-  def move(direction, lenght)
-  end
-
-  def initial_position
-    @initial_position
-  end
   
-
-  def set_position
-  end
-  
-  def check_command(command)
-  end
-
-  def stearing
-    #command = read_command
-    command = 'u'
-    while ['u'].include(command) do
-      puts "#{command} in ['u']"
+  def valid_command?(command)
+    last_x = @path.last[0]
+    last_y = @path.last[1]
+    direction, length = command[0], command[1].to_i
+    is_valid = false
+    if direction == 'u' && last_x - length >= 0
+      return true
+    elsif direction == 'd' && last_x + length < @dim
+      return true
+    elsif direction == 'l' && last_y - length >= 0
+      return true
+    elsif direction == 'r' && last_y + length <  @dim
+      return true
     end
+    is_valid
+  end
+
+  def calculate_path(command)
+    direction, length = command[0], command[1].to_i
+    last_x = @path.last[0]
+    last_y = @path.last[1]
+    new_points = []
+    
+    length.times do
+      if direction == 'u'
+        new_x = calc(last_x, -1)
+        new_points << [new_x, last_y]
+        last_x = new_x
+      elsif direction == 'd'
+        new_x = calc(last_x, 1)
+        new_points <<  [new_x, last_y]
+        last_x = new_x
+      elsif direction == 'l'
+        new_y = calc(last_y, -1)
+        new_points << [last_x, new_y]
+        last_y = new_y
+      elsif direction == 'r'
+        new_y = calc(last_y, 1)
+        new_points << [last_x, new_y]
+        last_y = new_y      
+      end
+    end
+    new_points
+  end
+
+  def calc(param, sign)
+    param += sign
   end
 end
 
@@ -127,15 +88,11 @@ elsif
   puts "Arg must be number greater than 1 and odd!"
   exit
 else
-  puts "ARGS OK!"
   logo = Logo.new(ARGV[0])
-  #puts logo.initial_position.to_s
-#  test = logo.read_command
-#  puts test.to_s
-#  puts test[1]
-#  puts @dim
-#  if test[1].to_i < logo.dim
-#    puts 'OK'
-
+  while true do
+    logo.print_board
+    command = logo.read_command # command[0] - direction, command[1] - length
+    exit if command[0] == 'q'
+    logo.path.concat(logo.calculate_path(command)) if logo.valid_command?(command)
+  end
 end
-

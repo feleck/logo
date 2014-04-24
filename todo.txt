@@ -83,3 +83,18 @@ Jako rozwiązanie oczekuję:
 
 Zadanie należy wykonać samodzielnie. Rozwiązanie będzie oceniane pod względem poprawności, czytelności i wydajności.
 
+- opisu podejścia do rozwiązania problemu
+  1. Sprawdzenie danych wejściowych, (n; n>1, nieparzyste)
+  2. Dodanie punktu środkowego do trasy (dotychczasowa trasa - trasa żółwia w tablicy współrzędnych),
+  3. Wydruk planszy trasą
+  4. Odczytanie z klawiatury komendy (walidacja składni - wyr. regularne), zakończenie jeśli "q" albo rozbicie na kierunek i długość kroku,
+  5. Jeśli długość nie spowoduje wyjścia poza planszę - dodanie nowych punktów do trasy,
+  do pkt. 3
+
+- kodu źródłowego
+  https://github.com/feleck/logo.git
+- opisu jak uruchomić napisany program
+  ruby logo.rb n gdzie n; n>1, nieparzyste
+- dla chętnych (testy jednostkowe)
+
+
