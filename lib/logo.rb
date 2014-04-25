@@ -1,5 +1,6 @@
 class Logo
   attr_accessor :path
+
   def initialize(board_dimensions)
     @dim = board_dimensions.to_i
     @path = []
@@ -8,8 +9,8 @@ class Logo
 
   def print_board
     puts "\e[H\e[2J"  # clear screen
-    (0...@dim).each do |x|
-      (0...@dim).each do |y|
+    (0...@dim).each do |y|
+      (0...@dim).each do |x|
         if @path.include?([x, y])
           print "x "
         else
@@ -33,13 +34,13 @@ class Logo
     last_y = @path.last[1]
     direction, length = command[0], command[1].to_i
     is_valid = false
-    if direction == 'u' && last_x - length >= 0
+    if direction == 'u' && last_y - length >= 0
       return true
-    elsif direction == 'd' && last_x + length < @dim
+    elsif direction == 'd' && last_y + length < @dim
       return true
-    elsif direction == 'l' && last_y - length >= 0
+    elsif direction == 'l' && last_x - length >= 0
       return true
-    elsif direction == 'r' && last_y + length <  @dim
+    elsif direction == 'r' && last_x + length <  @dim
       return true
     end
     is_valid
@@ -52,19 +53,19 @@ class Logo
     new_points = []
     
     length.times do
-      if direction == 'u'
+      if direction == 'l'
         new_x = calc(last_x, -1)
         new_points << [new_x, last_y]
         last_x = new_x
-      elsif direction == 'd'
+      elsif direction == 'r'
         new_x = calc(last_x, 1)
         new_points <<  [new_x, last_y]
         last_x = new_x
-      elsif direction == 'l'
+      elsif direction == 'u'
         new_y = calc(last_y, -1)
         new_points << [last_x, new_y]
         last_y = new_y
-      elsif direction == 'r'
+      elsif direction == 'd'
         new_y = calc(last_y, 1)
         new_points << [last_x, new_y]
         last_y = new_y      
