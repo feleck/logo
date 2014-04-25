@@ -4,7 +4,7 @@ class Logo
   def initialize(board_dimensions)
     @dim = board_dimensions.to_i
     @path = []
-    @path << [(@dim/2.0).to_i, (@dim/2.0).to_i]
+    @path << [(@dim/2), (@dim/2)]
   end
 
   def print_board

@@ -12,7 +12,7 @@ class MyUnitTests < Test::Unit::TestCase
     assert_equal(2, @logo.calc(3, -1))
   end
 
-   def test_valid_command?
+  def test_valid_command?
     command = ['l', 2]
     assert_equal(true, @logo.valid_command?(command))
     command = ['l', 3]
